@@ -1,4 +1,4 @@
-# 🩺 Diabetes Prediction Web App
+# 🩺 Diabetes Prediction System
 
 A Machine Learning-based web application that predicts the likelihood of diabetes using user health parameters.  
 The project is built using **Python, Flask, Scikit-learn, HTML, CSS, and Bootstrap** with a modern responsive UI.

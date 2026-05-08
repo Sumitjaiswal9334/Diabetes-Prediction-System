@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Diabetes Prediction</title> 
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 950px;
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .left-section {
+            flex: 1;
+            min-width: 300px;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: white;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .left-section h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .left-section p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #dcdcdc;
+        }
+
+        .right-section {
+            flex: 1;
+            min-width: 320px;
+            padding: 40px;
+        }
+
+        .form-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #1e3c72;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .form-control {
+            height: 50px;
+            border-radius: 12px;
+            border: 1px solid #dcdcdc;
+            padding-left: 15px;
+            margin-bottom: 18px;
+            transition: 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #2a5298;
+            box-shadow: 0 0 10px rgba(42, 82, 152, 0.3);
+        }
+
+        .predict-btn {
+            width: 100%;
+            height: 50px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        .predict-btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.95;
+        }
+
+        .prediction-box {
+            margin-top: 25px;
+            padding: 18px;
+            border-radius: 12px;
+            background: #f4f7ff;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 600;
+            color: #1e3c72;
+            border: 1px solid #d6e4ff;
+        }
+
+        .footer-text {
+            text-align: center;
+            margin-top: 25px;
+            color: gray;
+            font-size: 14px;
+        }
+
+        @media(max-width: 768px) {
+            .left-section {
+                text-align: center;
+            }
+
+            .left-section h1 {
+                font-size: 34px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main-container">
+
+        <!-- Left Side -->
+        <div class="left-section">
+            <h1>Diabetes Prediction System</h1>
+
+            <p>
+                Enter your health details to predict the possibility of diabetes using
+                Machine Learning.
+                <br><br>
+                This system helps users get quick health insights based on medical parameters.
+            </p>
+        </div>
+
+        <!-- Right Side -->
+        <div class="right-section">
+
+            <h2 class="form-title">Health Details</h2>
+
+            <form action="/predict" method="POST">
+
+                <!-- Pregnancies -->
+<input type="number" class="form-control" name="pregnancies"
+    placeholder="Number of Pregnancies (0 - 15)"
+    min="0" max="15" required>
+
+<small class="form-text text-muted mb-3">
+    Enter how many times the patient has been pregnant.
+</small>
+
+
+<!-- Glucose -->
+<input type="number" class="form-control" name="glucose"
+    placeholder="Glucose Level (70 - 200 mg/dL)"
+    min="0" max="300" required>
+
+<small class="form-text text-muted mb-3">
+    Normal glucose level is usually between 70 - 140 mg/dL.
+</small>
+
+
+<!-- Blood Pressure -->
+<input type="number" class="form-control" name="bloodPressure"
+    placeholder="Blood Pressure (60 - 140 mm Hg)"
+    min="0" max="200" required>
+
+<small class="form-text text-muted mb-3">
+    Normal blood pressure is around 80 - 120 mm Hg.
+</small>
+
+
+<!-- Skin Thickness -->
+<input type="number" class="form-control" name="SkinThickness"
+    placeholder="Skin Thickness (10 - 60 mm)"
+    min="0" max="100" required>
+
+<small class="form-text text-muted mb-3">
+    Typical skin thickness values range between 10 - 50 mm.
+</small>
+
+
+<!-- Insulin -->
+<input type="number" class="form-control" name="Insulin"
+    placeholder="Insulin Level (15 - 276 mu U/ml)"
+    min="0" max="900" required>
+
+<small class="form-text text-muted mb-3">
+    Healthy insulin levels are generally between 15 - 276 mu U/ml.
+</small>
+
+
+<!-- BMI -->
+<input type="number" step="any" class="form-control" name="BMI"
+    placeholder="BMI (18.5 - 40)"
+    min="0" max="70" required>
+
+<small class="form-text text-muted mb-3">
+    Normal BMI range is 18.5 - 24.9.
+</small>
+
+
+<!-- Diabetes Pedigree Function -->
+<input type="number" step="any" class="form-control"
+    name="DiabetesPedigreeFunction"
+    placeholder="Diabetes Pedigree Function (0.1 - 2.5)"
+    min="0" max="3" required>
+
+<small class="form-text text-muted mb-3">
+    Indicates likelihood of diabetes based on family history.
+</small>
+
+
+<!-- Age -->
+<input type="number" class="form-control" name="Age"
+    placeholder="Age (1 - 100 years)"
+    min="1" max="120" required>
+
+<small class="form-text text-muted mb-3">
+    Enter patient's current age in years.
+</small>
+                <button type="submit" class="predict-btn">
+                    Predict Diabetes
+                </button>
+
+            </form>
+
+            {% if prediction_text %}
+            <div class="prediction-box">
+                {{ prediction_text }}
+            </div>
+            {% endif %}
+
+            <div class="footer-text">
+                © 2026 Sumit Jaiswal
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

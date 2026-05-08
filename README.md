@@ -152,13 +152,11 @@ http://127.0.0.1:5000
 
 ---
 
-# 📸 Project Preview
+## 📸 Project Preview
 
-> Add your project screenshot here
-
-```md
-![Project Screenshot](templates/homepage.png)
-```
+<p align="center">
+  <img src="templates/homepage.png" alt="Project Screenshot" width="800"/>
+</p>
 
 ---
 
